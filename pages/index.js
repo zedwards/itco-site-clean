@@ -1,31 +1,49 @@
 import Head from "next/head";
 import Link from "next/link";
 
+const services = [
+  {
+    title: "AI Solutions",
+    text: "Accelerate adoption of AI with practical strategy, implementation, and scalable delivery across the enterprise.",
+  },
+  {
+    title: "Consulting Services",
+    text: "Drive modernization with cloud, cybersecurity, digital transformation, and outcome-focused technology consulting.",
+  },
+  {
+    title: "Workforce Solutions",
+    text: "Access specialized talent and project support to move faster, close skill gaps, and execute with confidence.",
+  },
+];
+
 export default function Home() {
   return (
     <>
       <Head>
-        <title>ITCO Solutions | AI, Cloud, Cybersecurity & Workforce</title>
+        <title>ITCO Solutions</title>
       </Head>
 
       <main className="site">
 
         {/* HEADER */}
-        <header className="header">
-          <img src="/itco-logo-blue.png" className="logo" alt="ITCO" />
+        <header className="topbar">
+          <img src="/itco-logo-blue.png" className="logo" />
 
           <nav>
             <Link href="/">Home</Link>
             <Link href="/services">Services</Link>
+            <Link href="/case-studies">Case Studies</Link>
+            <Link href="/careers">Careers</Link>
             <Link href="/contact">Contact</Link>
           </nav>
         </header>
 
         {/* HERO */}
         <section className="hero">
-          <h1>From Strategy to Execution</h1>
+          <h1>From AI Strategy to Real World Impact</h1>
           <p>
-            AI, Cloud, Cybersecurity, and Workforce Solutions built for real enterprise outcomes.
+            ITCO Solutions helps enterprises modernize with AI, cloud, cybersecurity,
+            and workforce solutions.
           </p>
 
           <div className="buttons">
@@ -34,59 +52,39 @@ export default function Home() {
           </div>
         </section>
 
-        {/* LOGO STRIP */}
-        <section className="logo-strip">
-          <p className="label">Trusted Across Enterprise Environments</p>
-
-          <div className="logos">
-            <img src="/itco-logo-blue.png" />
-            <img src="/itco-logo-blue.png" />
-            <img src="/itco-logo-blue.png" />
-            <img src="/itco-logo-blue.png" />
-            <img src="/itco-logo-blue.png" />
-          </div>
-        </section>
-
         {/* SERVICES */}
         <section className="services">
-          <div className="card">
-            <h3>AI Solutions</h3>
-            <p>Strategy to real-world deployment of enterprise AI.</p>
-          </div>
-
-          <div className="card">
-            <h3>Consulting</h3>
-            <p>Cloud, cybersecurity, and digital transformation execution.</p>
-          </div>
-
-          <div className="card">
-            <h3>Workforce</h3>
-            <p>Specialized talent to accelerate delivery and outcomes.</p>
-          </div>
+          {services.map((s) => (
+            <div key={s.title} className="card">
+              <h3>{s.title}</h3>
+              <p>{s.text}</p>
+            </div>
+          ))}
         </section>
 
         {/* CTA */}
         <section className="cta">
-          <h2>Ready to Move Faster?</h2>
+          <h2>Ready to Build What’s Next?</h2>
           <Link href="/contact" className="btn primary">Contact Us</Link>
         </section>
 
         {/* FOOTER */}
         <footer className="footer">
           <img src="/itco-logo-blue.png" className="logo" />
-          <p>Enterprise AI, Cloud, Cybersecurity, Workforce</p>
+          <p>Enterprise AI, cloud, cybersecurity, and workforce solutions.</p>
         </footer>
 
       </main>
 
       <style jsx>{`
-        .site {
+        body {
+          margin: 0;
+          font-family: Arial;
           background: black;
           color: white;
-          font-family: Arial;
         }
 
-        .header {
+        .topbar {
           display: flex;
           justify-content: space-between;
           padding: 20px;
@@ -111,7 +109,7 @@ export default function Home() {
         }
 
         .btn {
-          padding: 10px 20px;
+          padding: 12px 20px;
           border: 1px solid white;
           margin: 10px;
         }
@@ -119,28 +117,6 @@ export default function Home() {
         .primary {
           background: #1f6fff;
           border: none;
-        }
-
-        .logo-strip {
-          text-align: center;
-          padding: 60px 20px;
-        }
-
-        .label {
-          opacity: 0.6;
-          margin-bottom: 20px;
-        }
-
-        .logos {
-          display: flex;
-          justify-content: center;
-          gap: 40px;
-          flex-wrap: wrap;
-        }
-
-        .logos img {
-          height: 30px;
-          opacity: 0.5;
         }
 
         .services {
